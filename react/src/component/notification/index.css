@@ -1,0 +1,52 @@
+.notif{
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    display: inline-block;
+    padding: 10px 20px;
+    background: #00aeff;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    color: #ffffff;
+    animation: move 1s ease-in-out;
+    -webkit-animation: move 1s ease-in-out;
+    /* transform: scale(1) skew(-15deg);
+    -webkit-transform: scale(1) skew(-15deg);
+    -moz-transform: scale(1) skew(-15deg);
+    -ms-transform: scale(1) skew(-15deg);
+    -o-transform: scale(1) skew(-15deg); */
+}
+
+@keyframes move {
+    0%{
+        top: -100%;
+        rotate: 0deg;
+        transform: scale(.5);
+        -webkit-transform: scale(.5);
+        -moz-transform: scale(.5);
+        -ms-transform: scale(.5);
+        -o-transform: scale(.5);
+        -webkit-transform: scale(.5);
+    }
+    25%{
+        top: 5px;
+        transform: scale(.6);
+        -webkit-transform: scale(.6);
+        -moz-transform: scale(.6);
+        -ms-transform: scale(.6);
+        -o-transform: scale(.6);
+        -webkit-transform: scale(.5);
+    }
+    50%{
+        top: 10px;
+    }
+    75%{
+        top: 15px;
+    }
+    100%{
+        top: 20px;
+    }
+}
