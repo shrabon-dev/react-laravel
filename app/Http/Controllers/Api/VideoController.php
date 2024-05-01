@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Video;
 use App\Http\Requests\StoreVideoRequest;
 use App\Http\Requests\UpdateVideoRequest;
+use App\Http\Resources\VideoResource;
 use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Http\UploadedFile;
 use Pion\Laravel\ChunkUpload\Exceptions\UploadMissingFileException;
@@ -19,6 +20,11 @@ class VideoController extends Controller
      * Display a listing of the resource.
      */
     public function index()
+    {
+        $datas = Video::all();
+        return VideoResource::collection($datas);
+    }
+    public function list()
     {
         return 'video list';
     }
@@ -138,28 +144,7 @@ class VideoController extends Controller
 
         return $filename;
     }
-    // private function allChunksUploaded($chunkPath, $totalChunks)
-    // {
-    //     return count(glob($chunkPath . '*')) == $totalChunks;
-    // }
-    // private function concatenateChunks($chunkPath, $totalChunks, $filename)
-    // {
-    //     $finalFilepath = storage_path('app/public/uploads/video/') . $filename;
-    //     $finalFile = fopen($finalFilepath, 'wb');
 
-    //     for ($i = 1; $i <= $totalChunks; $i++) {
-    //         $chunkFilename = $i . '_' . $totalChunks . '_' . $filename;
-    //         $chunkFilepath = $chunkPath . $chunkFilename;
-    //         $chunkContent = file_get_contents($chunkFilepath);
-
-    //         fwrite($finalFile, $chunkContent);
-
-    //         // Optionally, you can delete the individual chunks after concatenation
-    //         unlink($chunkFilepath);
-    //     }
-
-    //     fclose($finalFile);
-    // }
 
     public function show($id)
     {

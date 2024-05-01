@@ -10,32 +10,52 @@ import Form from "./pages/Form";
 import PlayVideo from "./pages/Play";
 import Home from "./pages/Home";
 import Upload from "./pages/Upload";
+import List from "./pages/video/List";
+import Movie from "./pages/Movie";
 
 const router = createBrowserRouter([
     {
-        path:'/dashboard',
+        path:'/panel',
         element:<Authlayout/>,
         children: [
             {
-                path:'/dashboard',
+                path:'/panel',
                 element:<Dashboard/>,
             },
             {
-                path:'/dashboard/user',
+                path:'/panel/user',
                 element:<Users/>,
             },
             {
-                path:'/dashboard/user/:key',
+                path:'/panel/user/:key',
                 element:<Form/>,
             },
             {
-                path:'/dashboard/user/:id/:key',
+                path:'/panel/user/:id/:key',
                 element:<Form/>,
             },
             // Video Upload Route Start
             {
-                path:'/dashboard/upload',
-                element:<Upload/>,
+                path:'/panel/video',
+                // element:<Upload/>,
+                children:[
+                    {
+                        path:'/panel/video/upload',
+                        element:<Upload/>,
+                    },
+                    {
+                        path:'/panel/video/list',
+                        element:<List/>,
+                    },
+                    {
+                        path:'/panel/video/:id',
+                        element:<Upload/>,
+                    },
+                    {
+                        path:'/panel/video/update/:id',
+                        element:<Upload/>,
+                    },
+                ]
             }
         ]
     },
@@ -58,6 +78,10 @@ const router = createBrowserRouter([
             {
                 path:'/play',
                 element:<PlayVideo/>,
+            },
+            {
+                path:'/movie',
+                element:<Movie/>,
             },
             {
                 path:'*',

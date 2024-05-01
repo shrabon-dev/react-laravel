@@ -2,6 +2,7 @@ import React from 'react'
 import logo from '../../assets/light-logo.png'
 import { IoSearchOutline } from "react-icons/io5";
 import { IoIosNotifications } from "react-icons/io";
+import { NavLink } from 'react-router-dom';
 
 export default function Navbar() {
     let logoStyle = {
@@ -16,8 +17,9 @@ export default function Navbar() {
     }
   return (
     <>
-    <nav className='bg-transparent fixed top-10 w-full z-[99999]'>
-        <div className='flex justify-between items-center container'>
+    <nav className='bg-transparent fixed top-4 w-full z-[99999]'>
+        <div className="container-fluid">
+        <div className='flex justify-between items-center '>
             {/* Logo Start */}
             <div className="">
                 <picture>
@@ -25,16 +27,17 @@ export default function Navbar() {
                 </picture>
             </div>
             <ul className='flex gap-10 bg-dark p-4 border-2 border-subDark rounded-lg'>
-                <li><a  className='font-manrope font-light text-lg p-4 py-[12px] hover:bg-subDark rounded-lg duration-300 ease-linear' href="#">Home</a></li>
-                <li><a  className='font-manrope font-light text-lg p-4 py-[12px] hover:bg-subDark rounded-lg duration-300 ease-linear' href="#">Movies & Shows</a></li>
-                <li><a  className='font-manrope font-light text-lg p-4 py-[12px] hover:bg-subDark rounded-lg duration-300 ease-linear' href="#">Support</a></li>
-                <li><a  className='font-manrope font-light text-lg p-4 py-[12px] hover:bg-subDark rounded-lg duration-300 ease-linear' href="#">Subscriptions</a></li>
+                <li><NavLink to={'/'}  className='font-manrope font-light text-lg p-4 py-[12px] hover:bg-subDark rounded-lg duration-300 ease-linear' href="#">Home</NavLink></li>
+                <li><NavLink to={'/movie'}  className='font-manrope font-light text-lg p-4 py-[12px] hover:bg-subDark rounded-lg duration-300 ease-linear' href="#">Movies & Shows</NavLink></li>
+                <li><NavLink to={'/play'}  className='font-manrope font-light text-lg p-4 py-[12px] hover:bg-subDark rounded-lg duration-300 ease-linear' href="#">Support</NavLink></li>
+                <li><NavLink to={'/play'}  className='font-manrope font-light text-lg p-4 py-[12px] hover:bg-subDark rounded-lg duration-300 ease-linear' href="#">Subscriptions</NavLink></li>
             </ul>
             {/* Login & Signup */}
             <div className="flex gap-10 items-center">
                 <a className='text-2xl hover:text-red-600 duration-300 ease-linear ' href="#"><IoSearchOutline className='inline-block'/></a>
                 <a className='text-2xl hover:text-red-600 duration-300 ease-linear ' href="#"><IoIosNotifications className='inline-block'/></a>
             </div>
+        </div>
         </div>
     </nav>
     </>

@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 @layer utilities{
-
+    .container-fluid{
+        @apply px-28
+    }
     .active{
         max-height: 1000px;
         transition: max-height 1s ease-in-out;

@@ -16,7 +16,7 @@ export default function VideoPlay() {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            let response = await Api.get('upload/8');
+            let response = await Api.get('upload/1');
             let data = response.data;
             setIsLoading(true)
             setVideofile(data);

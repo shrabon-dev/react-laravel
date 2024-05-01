@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, Navigate, Outlet } from 'react-router-dom'
+import { Link, Navigate, Outlet, useLocation } from 'react-router-dom'
 import { useStateContext } from '../context/ContextProvider'
 import Api from '../api';
 import Notification from '../component/notification';
@@ -8,7 +8,7 @@ import { MdArrowRightAlt } from "react-icons/md";
 
 export default function Authlayout() {
    let {token,setToken,user,setUser,loading,setLoading,notify} = useStateContext();
-
+   let location = useLocation();
     // Checking User Authorize or Not
    if(!token){
     return <Navigate to={'/login'} />
@@ -56,7 +56,7 @@ export default function Authlayout() {
 
   return (
 
-    <div id='authLayout'>
+    <div id='authLayout' style={{ background:'white' }}>
 
         <aside className='asideMenuBar'>
         <div className="logo">
@@ -65,12 +65,12 @@ export default function Authlayout() {
             </picture>
         </div>
             <ul>
-                <li><Link to={'/dashboard'}>Dashboard</Link></li>
-                <li><Link to={'/dashboard/user'}>User</Link></li>
+                <li><Link to={'/panel'}>Dashboard</Link></li>
+                <li><Link to={'/panel/user'}>User</Link></li>
                 <li onClick={toggleHeight} className='group'><Link >Video Managmt</Link>
                 <ul className={`group-hover:max-h-52 overflow-hidden max-h-0 duration-700 bg-subBg ${isActive ? 'active' : ''}`}>
-                    <li><Link className='!pl-10 block' to={'/dashboard/upload'} > <MdArrowRightAlt className='inline-block' /> Upload</Link></li>
-                    <li><a className='!pl-10 block' href="#"> <MdArrowRightAlt className='inline-block' /> List</a></li>
+                    <li><Link className={` ${location.pathname == '/panel/video/upload' ? 'bg-[#F69428]' : ''} !pl-10 block`} to={'/panel/video/upload'} > <MdArrowRightAlt className='inline-block' /> Upload</Link></li>
+                    <li><Link className={` ${location.pathname == '/panel/video/list' ? 'bg-[#F69428]' : ''} !pl-10 block`} to={'/panel/video/list'}> <MdArrowRightAlt className='inline-block' /> List</Link></li>
                     <li><a className='!pl-10 block' href="#"> <MdArrowRightAlt className='inline-block' /> Report</a></li>
                 </ul>
                 </li>
@@ -80,7 +80,7 @@ export default function Authlayout() {
         <div id='content'>
             <header className='headerMenuBar fixed z-[9999] w-[91%] mb-10'>
                 <ul>
-                    <li><Link to={'/dashboard'}>Dashboard</Link></li>
+                    <li><Link to={'/panel'}>Dashboard</Link></li>
 
                 </ul>
                 <div className="info">
@@ -93,8 +93,8 @@ export default function Authlayout() {
             </div>
             {/* main content box end*/}
         </div>
-        {/* {loading && (
-            <div className="loading">
+        {loading && (
+            <div className="loading" style={{ height:'100dvh' }}>
             <span style={{'--index': 1}}>L</span>
             <span style={{'--index': 2}}>o</span>
             <span style={{'--index': 3}}>a</span>
@@ -106,7 +106,7 @@ export default function Authlayout() {
             <span style={{'--index': 9}}>.</span>
             <span style={{'--index': 10}}>.</span>
             </div>
-        )} */}
+        )}
         {notify &&
         <Notification message={notify}/>
         }

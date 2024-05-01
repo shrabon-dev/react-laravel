@@ -160,7 +160,7 @@ export default function Upload() {
         }
 
         // setVFile(data.get('video'))
-        Api.post('upload',data,{
+        Api.post('video',data,{
             headers: {
               'Content-Type': 'multipart/form-data',
               Authorization: `Bearer ${token}`,
@@ -382,8 +382,6 @@ export default function Upload() {
         }
     }
 
-
-
   return (
     <>
      {/* Upload Form Start */}
@@ -467,7 +465,11 @@ export default function Upload() {
                 <div className="isShowInput">
                     <div className='w-full pb-4'>
                         <label htmlFor="" className='text-white text-lg font-light font-poppins'>Video File :</label>
+                        { formData.video ?
+                        <p className='text-white bg-[#58acb6] p-4 rounded-lg text-lg font-light font-poppins'>{formData.video}</p>
+                        :
                         <input ref={browseFileRef} type='file' name='video' accept='video/*' onChange={handleChange}  className={`inpStyle border-4 border-red-700  ${errors.video && `border-red-700`}`}/>
+                        }
                     </div>
                     {progress != undefined &&
                     <div className="animate">
