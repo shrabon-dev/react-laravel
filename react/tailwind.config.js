@@ -12,6 +12,7 @@ export default {
             'subBg' : '#1D5B61',
             'main' : '#054950',
             'dark' : '#0F0F0F',
+            'border2' : '#1f1f1f',
             'subDark' : '#1A1A1A',
             'body' : '#141414',
             'second' : '#999999',
