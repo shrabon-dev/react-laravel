@@ -17,7 +17,7 @@ export default function Navbar() {
     }
   return (
     <>
-    <nav className='bg-transparent fixed top-4 w-full z-[99999]'>
+    <nav className='bg-transparent fixed hidden sm:block top-0 py-4 border-b border-transparent w-full z-[99999]'>
         <div className="container-fluid">
         <div className='flex justify-between items-center '>
             {/* Logo Start */}
@@ -26,11 +26,11 @@ export default function Navbar() {
                     <img className='block w-40'  src={logo} alt="vplay logo" />
                 </picture>
             </div>
-            <ul className='flex gap-10 bg-dark p-4 border-2 border-subDark rounded-lg'>
-                <li><NavLink to={'/'}  className='font-manrope font-light text-lg p-4 py-[12px] hover:bg-subDark rounded-lg duration-300 ease-linear' href="#">Home</NavLink></li>
-                <li><NavLink to={'/movie'}  className='font-manrope font-light text-lg p-4 py-[12px] hover:bg-subDark rounded-lg duration-300 ease-linear' href="#">Movies & Shows</NavLink></li>
-                <li><NavLink to={'/play'}  className='font-manrope font-light text-lg p-4 py-[12px] hover:bg-subDark rounded-lg duration-300 ease-linear' href="#">Support</NavLink></li>
-                <li><NavLink to={'/play'}  className='font-manrope font-light text-lg p-4 py-[12px] hover:bg-subDark rounded-lg duration-300 ease-linear' href="#">Subscriptions</NavLink></li>
+            <ul className='flex lg:gap-10 bg-dark p-4 py-6 border-2 border-subDark rounded-lg'>
+                <li><NavLink to={'/'}  className='font-manrope font-light md:text-sm lg:text-lg p-2 lg:p-1 xl:p-4 py-[12px] hover:bg-subDark rounded-lg duration-300 ease-linear' href="#">Home</NavLink></li>
+                <li><NavLink to={'/movie'}  className='font-manrope font-light md:text-sm lg:text-lg p-2 lg:p-1 xl:p-4 py-[12px] hover:bg-subDark rounded-lg duration-300 ease-linear' href="#">Movies & Shows</NavLink></li>
+                <li><NavLink to={'/support'}  className='font-manrope font-light md:text-sm lg:text-lg p-2 lg:p-1 xl:p-4 py-[12px] hover:bg-subDark rounded-lg duration-300 ease-linear' href="#">Support</NavLink></li>
+                <li><NavLink to={'/subscription'}  className='font-manrope font-light md:text-sm lg:text-lg p-2 lg:p-1 xl:p-4 py-[12px] hover:bg-subDark rounded-lg duration-300 ease-linear' href="#">Subscriptions</NavLink></li>
             </ul>
             {/* Login & Signup */}
             <div className="flex gap-10 items-center">

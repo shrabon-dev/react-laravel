@@ -7,10 +7,10 @@ import { FaEye } from "react-icons/fa6";
 export default function MovieCard(props) {
   return (
     <>
-     <div className='movieCard w-1/5'>
-        <div className="border rounded-xl border-border bg-bg p-4">
+     <div className='movieCard'>
+        <div className="border rounded-xl border-border bg-bg p-2 sm:p-4">
             <div className="img w-full  pb-5">
-                <img className='w-full h-[280px] object-cover  block rounded-xl' src={props.img? props.img : card1} alt={props.img? props.img : card1} />
+                <img className='w-full lg:h-[180px] 2xl:h-[280px] object-cover  block rounded-xl' src={props.img? props.img : card1} alt={props.img? props.img : card1} />
             </div>
             {props.movie ?
             <div className="info !flex justify-between">
@@ -24,7 +24,7 @@ export default function MovieCard(props) {
             :
             <div className="info !flex justify-between items-center">
                 <div className="left">
-                    <p className='font-manrope font-semibold text-lg text-white'>Action</p>
+                    <p className='font-manrope font-semibold text-xs md:text-lg text-white'>Action</p>
                 </div>
                 <div className="right">
                     <a href="#" className=' text-lg'><GoArrowRight/></a>

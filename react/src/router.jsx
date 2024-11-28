@@ -12,6 +12,8 @@ import Home from "./pages/Home";
 import Upload from "./pages/Upload";
 import List from "./pages/video/List";
 import Movie from "./pages/Movie";
+import Subscription from "./pages/frontend/Subscription";
+import Support from "./pages/frontend/Support";
 
 const router = createBrowserRouter([
     {
@@ -82,6 +84,14 @@ const router = createBrowserRouter([
             {
                 path:'/movie',
                 element:<Movie/>,
+            },
+            {
+                path:'/subscription',
+                element:<Subscription/>,
+            },
+            {
+                path:'/support',
+                element:<Support/>,
             },
             {
                 path:'*',

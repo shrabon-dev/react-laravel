@@ -1,182 +1,505 @@
-import React from 'react'
+import React, { useState } from 'react'
 import MovieCard from '../movieCard'
 import { HiArrowSmallLeft } from "react-icons/hi2";
 import { HiArrowSmallRight } from "react-icons/hi2";
 import antime from '../../../assets/movie/sl.webp'
 import tiger from '../../../assets/movie/tiger.jpg'
+// import Swiper core and required modules
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+
+import { Swiper, SwiperSlide,useSwiper  } from 'swiper/react';
+import Title from '../../title';
 
 export default function Movies() {
+    const [releaseCurs, setReleaseCurs] = useState(null);
+    const [genresCurs, setGenresCurs] = useState(null);
+    const [trendCurs, setTrendCurs] = useState(null);
+    const [hviewsCurs, setHviewsCurs] = useState(null);
+    const [releaseShowCurs, setReleaseShowCurs] = useState(null);
+    const [genresShowCurs, setGenresShowCurs] = useState(null);
+    const [trendShowCurs, setTrendShowCurs] = useState(null);
+    const [hviewsShowCurs, setHviewsShowCurs] = useState(null);
   return (
     <>
         <section>
             <div className="container-fluid">
-                <div className="border-[1px] rounded-xl border-[#262626] my-10 p-14 relative mt-20">
-                    <div className="movie-title text-white font-manrope font-medium rounded-md bg-btn py-3 px-6 absolute -top-6 left-10">Movies</div>
-
-                    <div className="title flex justify-between items-center pb-12">
-                        <h4 className='font-manrope font-bold text-white text-4xl '>Our Genres </h4>
-                        <div className='bg-[#0F0F0F] border border-border rounded-xl  flex justify-between items-center p-3'>
-                            <span className='bg-body border border-border rounded-xl p-3 inline-block mr-3 text-white  cursor-pointer hover:bg-btn duration-200' ><HiArrowSmallLeft/></span>
-                            <span className='bg-body border border-border rounded-xl p-3 inline-block text-white  cursor-pointer hover:bg-btn duration-200' ><HiArrowSmallRight/></span>
+                <div className="border-[1px] rounded-xl border-[#262626] my-10 p-6 md:p-14 relative mt-20">
+                    <div className="movie-title text-white text-sm md:text-lg font-manrope font-medium rounded-md bg-btn py-2 md:py-3 px-3 md:px-6 absolute -top-6 left-10">Movies</div>
+                    <div className="new_release_movie">
+                        {/* Movie Card  */}
+                        <Title movieTitle={true} title={'New Release'} swiperInstance={releaseCurs}/>
+                        <div className="">
+                        <Swiper
+                        // install Swiper modules
+                        modules={[Navigation, Pagination, Scrollbar, A11y]}
+                        spaceBetween={20}
+                        slidesPerView={4}
+                        onSwiper={setReleaseCurs}
+                        onSlideChange={() => console.log('slide change')}
+                        breakpoints={{
+                          300: {
+        slidesPerView: 2,
+        spaceBetween: 10,
+},
+                            640: {
+                                slidesPerView: 3,
+                                spaceBetween: 20,
+                            },
+                            768: {
+                                slidesPerView: 3,
+                                spaceBetween: 30,
+                            },
+                            1024: {
+                                slidesPerView: 4,
+                                spaceBetween: 40,
+                            },
+                            1424: {
+                                slidesPerView: 5,
+                                spaceBetween: 40,
+                            },
+                        }}
+                        >
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        </Swiper> 
                         </div>
                     </div>
-                    {/* Movie Card  */}
-                    <div className="flex gap-7 pb-24">
-                        <MovieCard/>
-                        <MovieCard/>
-                        <MovieCard/>
-                        <MovieCard/>
-                        <MovieCard/>
-                    </div>
-
-                    {/*  Popular Genres */}
-                    <div className="title flex justify-between items-center pb-12">
-                        <h4 className='font-manrope font-bold text-white text-4xl '>Popular Top 10 In Genres</h4>
-                        <div className='bg-[#0F0F0F] border border-border rounded-xl  flex justify-between items-center p-3'>
-                            <span className='bg-body border border-border rounded-xl p-3 inline-block mr-3 text-white  cursor-pointer hover:bg-btn duration-200' ><HiArrowSmallLeft/></span>
-                            <span className='bg-body border border-border rounded-xl p-3 inline-block text-white  cursor-pointer hover:bg-btn duration-200' ><HiArrowSmallRight/></span>
+                    <div className="our_genres pt-20">
+                        {/*  Popular Genres */}
+                        <Title movieTitle={true} title={'Our Genres'} swiperInstance={genresCurs}/>
+                        <div className="">
+                        <Swiper
+                        // install Swiper modules
+                        modules={[Navigation, Pagination, Scrollbar, A11y]}
+                        spaceBetween={20}
+                        slidesPerView={4}
+                        onSwiper={setGenresCurs}
+                        onSlideChange={() => console.log('slide change')}
+                        breakpoints={{
+                          300: {
+        slidesPerView: 2,
+        spaceBetween: 10,
+},
+                            640: {
+                                slidesPerView: 3,
+                                spaceBetween: 20,
+                            },
+                            768: {
+                                slidesPerView: 3,
+                                spaceBetween: 30,
+                            },
+                            1024: {
+                                slidesPerView: 4,
+                                spaceBetween: 40,
+                            },
+                            1424: {
+                                slidesPerView: 5,
+                                spaceBetween: 40,
+                            },
+                        }}
+                        >
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        </Swiper>
+                        
                         </div>
                     </div>
-                    <div className="flex gap-7 pb-24">
-                        <MovieCard/>
-                        <MovieCard/>
-                        <MovieCard/>
-                        <MovieCard/>
-                        <MovieCard/>
-                    </div>
-
-                    {/* Trending now  */}
-                    <div className="title flex justify-between items-center pb-12">
-                        <h4 className='font-manrope font-bold text-white text-4xl '>Trending Now</h4>
-                        <div className='bg-[#0F0F0F] border border-border rounded-xl  flex justify-between items-center p-3'>
-                            <span className='bg-body border border-border rounded-xl p-3 inline-block mr-3 text-white  cursor-pointer hover:bg-btn duration-200' ><HiArrowSmallLeft/></span>
-                            <span className='bg-body border border-border rounded-xl p-3 inline-block text-white  cursor-pointer hover:bg-btn duration-200' ><HiArrowSmallRight/></span>
+                    <div className="trending_movie pt-20">
+                        {/* Trending now  */}
+                        <Title movieTitle={true} title={'Trending Now'} swiperInstance={trendCurs}/>
+                        <div className="">
+                        <Swiper
+                        // install Swiper modules
+                        modules={[Navigation, Pagination, Scrollbar, A11y]}
+                        spaceBetween={20}
+                        slidesPerView={4}
+                        onSwiper={setTrendCurs}
+                        onSlideChange={() => console.log('slide change')}
+                        breakpoints={{
+                          300: {
+        slidesPerView: 2,
+        spaceBetween: 10,
+},
+                            640: {
+                                slidesPerView: 3,
+                                spaceBetween: 20,
+                            },
+                            768: {
+                                slidesPerView: 3,
+                                spaceBetween: 30,
+                            },
+                            1024: {
+                                slidesPerView: 4,
+                                spaceBetween: 40,
+                            },
+                            1424: {
+                                slidesPerView: 5,
+                                spaceBetween: 40,
+                            },
+                        }}
+                        >
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        </Swiper>
+                        
                         </div>
                     </div>
-                    <div className="flex gap-7 pb-24">
-                        <MovieCard movie='true'  img={antime}/>
-                        <MovieCard movie='true' img={tiger}/>
-                        <MovieCard movie='true'  img={antime}/>
-                        <MovieCard movie='true' img={tiger}/>
-                        <MovieCard movie='true' img={tiger}/>
-                    </div>
-
-                    {/* Trending now  */}
-                    <div className="title flex justify-between items-center pb-12">
-                        <h4 className='font-manrope font-bold text-white text-4xl '>New Releases</h4>
-                        <div className='bg-[#0F0F0F] border border-border rounded-xl  flex justify-between items-center p-3'>
-                            <span className='bg-body border border-border rounded-xl p-3 inline-block mr-3 text-white  cursor-pointer hover:bg-btn duration-200' ><HiArrowSmallLeft/></span>
-                            <span className='bg-body border border-border rounded-xl p-3 inline-block text-white  cursor-pointer hover:bg-btn duration-200' ><HiArrowSmallRight/></span>
+                    <div className="highest_views pt-20">
+                        {/* Heigst Views  */}
+                        <Title movieTitle={true} title={'Highest Views in this week'} swiperInstance={hviewsCurs}/>
+                        <div className="">
+                        <Swiper
+                        // install Swiper modules
+                        modules={[Navigation, Pagination, Scrollbar, A11y]}
+                        spaceBetween={20}
+                        slidesPerView={4}
+                        onSwiper={setHviewsCurs}
+                        onSlideChange={() => console.log('slide change')}
+                        breakpoints={{
+                          300: {
+        slidesPerView: 2,
+        spaceBetween: 10,
+},
+                            640: {
+                                slidesPerView: 3,
+                                spaceBetween: 20,
+                            },
+                            768: {
+                                slidesPerView: 3,
+                                spaceBetween: 30,
+                            },
+                            1024: {
+                                slidesPerView: 4,
+                                spaceBetween: 40,
+                            },
+                            1424: {
+                                slidesPerView: 5,
+                                spaceBetween: 40,
+                            },
+                        }}
+                        >
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        </Swiper>
+                        
                         </div>
-                    </div>
-                    <div className="flex gap-7 pb-24">
-                        <MovieCard movie='true'/>
-                        <MovieCard movie='true'/>
-                        <MovieCard movie='true'/>
-                        <MovieCard movie='true'/>
-                        <MovieCard movie='true'/>
-                    </div>
-
-
-                    {/* Trending now  */}
-                    <div className="title flex justify-between items-center pb-12">
-                        <h4 className='font-manrope font-bold text-white text-4xl '>Must - Watch Movies</h4>
-                        <div className='bg-[#0F0F0F] border border-border rounded-xl  flex justify-between items-center p-3'>
-                            <span className='bg-body border border-border rounded-xl p-3 inline-block mr-3 text-white  cursor-pointer hover:bg-btn duration-200' ><HiArrowSmallLeft/></span>
-                            <span className='bg-body border border-border rounded-xl p-3 inline-block text-white  cursor-pointer hover:bg-btn duration-200' ><HiArrowSmallRight/></span>
-                        </div>
-                    </div>
-                    {/* Movie Card  */}
-                    <div className="flex gap-7 pb-24">
-                        <MovieCard movie='true'  img={antime}/>
-                        <MovieCard movie='true' img={tiger}/>
-                        <MovieCard movie='true'  img={antime}/>
-                        <MovieCard movie='true' img={tiger}/>
-                        <MovieCard movie='true' img={tiger}/>
                     </div>
                 </div>
-                <div className="border-[1px] rounded-xl border-[#262626] my-10 p-14 relative mt-20">
-                    <div className="movie-title text-white font-manrope font-medium rounded-md bg-btn py-3 px-6 absolute -top-6 left-10">Shows</div>
-
-                    <div className="title flex justify-between items-center pb-12">
-                        <h4 className='font-manrope font-bold text-white text-4xl '>Our Genres </h4>
-                        <div className='bg-[#0F0F0F] border border-border rounded-xl  flex justify-between items-center p-3'>
-                            <span className='bg-body border border-border rounded-xl p-3 inline-block mr-3 text-white  cursor-pointer  hover:bg-btn duration-200' ><HiArrowSmallLeft/></span>
-                            <span className='bg-body border border-border rounded-xl p-3 inline-block text-white  cursor-pointer   hover:bg-btn duration-200' ><HiArrowSmallRight/></span>
+                <div className="border-[1px] rounded-xl border-[#262626] my-10 p-6 md:p-14 relative mt-20">
+                    <div className="movie-title text-white text-sm md:text-lg font-manrope font-medium rounded-md bg-btn py-2 md:py-3 px-3 md:px-6 absolute -top-6 left-10">Shows</div>
+                    <div className="new_release_movie">
+                        {/* Movie Card  */}
+                        <Title movieTitle={true} title={'New Release'} swiperInstance={releaseShowCurs}/>
+                        <div className="">
+                        <Swiper
+                        // install Swiper modules
+                        modules={[Navigation, Pagination, Scrollbar, A11y]}
+                        spaceBetween={20}
+                        slidesPerView={4}
+                        onSwiper={setReleaseShowCurs}
+                        onSlideChange={() => console.log('slide change')}
+                        breakpoints={{
+                          300: {
+        slidesPerView: 2,
+        spaceBetween: 10,
+},
+                            640: {
+                                slidesPerView: 3,
+                                spaceBetween: 20,
+                            },
+                            768: {
+                                slidesPerView: 3,
+                                spaceBetween: 30,
+                            },
+                            1024: {
+                                slidesPerView: 4,
+                                spaceBetween: 40,
+                            },
+                            1424: {
+                                slidesPerView: 5,
+                                spaceBetween: 40,
+                            },
+                        }}
+                        >
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        </Swiper> 
                         </div>
                     </div>
-                    {/* Movie Card  */}
-                    <div className="flex gap-7 pb-24">
-                        <MovieCard/>
-                        <MovieCard/>
-                        <MovieCard/>
-                        <MovieCard/>
-                        <MovieCard/>
-                    </div>
-
-                    {/*  Popular Genres */}
-                    <div className="title flex justify-between items-center pb-12">
-                        <h4 className='font-manrope font-bold text-white text-4xl '>Popular Top 10 In Genres</h4>
-                        <div className='bg-[#0F0F0F] border border-border rounded-xl  flex justify-between items-center p-3'>
-                            <span className='bg-body border border-border rounded-xl p-3 inline-block mr-3 text-white  cursor-pointer hover:bg-btn duration-200' ><HiArrowSmallLeft/></span>
-                            <span className='bg-body border border-border rounded-xl p-3 inline-block text-white  cursor-pointer hover:bg-btn duration-200' ><HiArrowSmallRight/></span>
+                    <div className="our_genres pt-20">
+                        {/*  Popular Genres */}
+                        <Title movieTitle={true} title={'Our Genres'} swiperInstance={genresShowCurs}/>
+                        <div className="">
+                        <Swiper
+                        // install Swiper modules
+                        modules={[Navigation, Pagination, Scrollbar, A11y]}
+                        spaceBetween={20}
+                        slidesPerView={4}
+                        onSwiper={setGenresShowCurs}
+                        onSlideChange={() => console.log('slide change')}
+                        breakpoints={{
+                          300: {
+        slidesPerView: 2,
+        spaceBetween: 10,
+},
+                            640: {
+                                slidesPerView: 3,
+                                spaceBetween: 20,
+                            },
+                            768: {
+                                slidesPerView: 3,
+                                spaceBetween: 30,
+                            },
+                            1024: {
+                                slidesPerView: 4,
+                                spaceBetween: 40,
+                            },
+                            1424: {
+                                slidesPerView: 5,
+                                spaceBetween: 40,
+                            },
+                        }}
+                        >
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        </Swiper>
+                        
                         </div>
                     </div>
-                    <div className="flex gap-7 pb-24">
-                        <MovieCard movie='true'  img={antime}/>
-                        <MovieCard movie='true' img={tiger}/>
-                        <MovieCard movie='true'  img={antime}/>
-                        <MovieCard movie='true' img={tiger}/>
-                        <MovieCard movie='true' img={tiger}/>
-                    </div>
-
-                    {/* Trending now  */}
-                    <div className="title flex justify-between items-center pb-12">
-                        <h4 className='font-manrope font-bold text-white text-4xl'>Trending Now</h4>
-                        <div className='bg-[#0F0F0F] border border-border rounded-xl  flex justify-between items-center p-3'>
-                            <span className='bg-body border border-border rounded-xl p-3 inline-block mr-3 text-white  cursor-pointer hover:bg-btn duration-200' ><HiArrowSmallLeft/></span>
-                            <span className='bg-body border border-border rounded-xl p-3 inline-block text-white  cursor-pointer hover:bg-btn duration-200' ><HiArrowSmallRight/></span>
+                    <div className="trending_movie pt-20">
+                        {/* Trending now  */}
+                        <Title movieTitle={true} title={'Trending Now'} swiperInstance={trendShowCurs}/>
+                        <div className="">
+                        <Swiper
+                        // install Swiper modules
+                        modules={[Navigation, Pagination, Scrollbar, A11y]}
+                        spaceBetween={20}
+                        slidesPerView={4}
+                        onSwiper={setTrendShowCurs}
+                        onSlideChange={() => console.log('slide change')}
+                        breakpoints={{
+                          300: {
+        slidesPerView: 2,
+        spaceBetween: 10,
+},
+                            640: {
+                                slidesPerView: 3,
+                                spaceBetween: 20,
+                            },
+                            768: {
+                                slidesPerView: 3,
+                                spaceBetween: 30,
+                            },
+                            1024: {
+                                slidesPerView: 4,
+                                spaceBetween: 40,
+                            },
+                            1424: {
+                                slidesPerView: 5,
+                                spaceBetween: 40,
+                            },
+                        }}
+                        >
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        </Swiper>
+                        
                         </div>
                     </div>
-                    <div className="flex gap-7 pb-24">
-                        <MovieCard movie='true'/>
-                        <MovieCard movie='true'/>
-                        <MovieCard movie='true'/>
-                        <MovieCard movie='true'/>
-                        <MovieCard movie='true'/>
-                    </div>
-                    {/* Trending now  */}
-                    <div className="title flex justify-between items-center pb-12">
-                        <h4 className='font-manrope font-bold text-white text-4xl '>New Releases</h4>
-                        <div className='bg-[#0F0F0F] border border-border rounded-xl  flex justify-between items-center p-3'>
-                            <span className='bg-body border border-border rounded-xl p-3 inline-block mr-3 text-white  cursor-pointer hover:bg-btn duration-200' ><HiArrowSmallLeft/></span>
-                            <span className='bg-body border border-border rounded-xl p-3 inline-block text-white  cursor-pointer hover:bg-btn duration-200' ><HiArrowSmallRight/></span>
+                    <div className="highest_views pt-20">
+                        {/* Heigst Views  */}
+                        <Title movieTitle={true} title={'Highest Views in this week'} swiperInstance={hviewsShowCurs}/>
+                        <div className="">
+                        <Swiper
+                        // install Swiper modules
+                        modules={[Navigation, Pagination, Scrollbar, A11y]}
+                        spaceBetween={20}
+                        slidesPerView={4}
+                        onSwiper={setHviewsShowCurs}
+                        onSlideChange={() => console.log('slide change')}
+                        breakpoints={{
+                            300: {
+                                slidesPerView: 2,
+                                spaceBetween: 10,
+                            },
+                            640: {
+                                slidesPerView: 3,
+                                spaceBetween: 20,
+                            },
+                            768: {
+                                slidesPerView: 3,
+                                spaceBetween: 30,
+                            },
+                            1024: {
+                                slidesPerView: 4,
+                                spaceBetween: 40,
+                            },
+                            1424: {
+                                slidesPerView: 5,
+                                spaceBetween: 40,
+                            },
+                        }}
+                        >
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MovieCard/>
+                        </SwiperSlide>
+                        </Swiper>
+                        
                         </div>
-                    </div>
-                    <div className="flex gap-7 pb-24">
-                        <MovieCard movie='true'/>
-                        <MovieCard movie='true'/>
-                        <MovieCard movie='true'/>
-                        <MovieCard movie='true'/>
-                        <MovieCard movie='true'/>
-                    </div>
-                    {/* Trending now  */}
-                    <div className="title flex justify-between items-center pb-12">
-                        <h4 className='font-manrope font-bold text-white text-4xl '>Must - Watch Movies</h4>
-                        <div className='bg-[#0F0F0F] border border-border rounded-xl  flex justify-between items-center p-3'>
-                            <span className='bg-body border border-border rounded-xl p-3 inline-block mr-3 text-white  cursor-pointer hover:bg-btn duration-200' ><HiArrowSmallLeft/></span>
-                            <span className='bg-body border border-border rounded-xl p-3 inline-block text-white  cursor-pointer hover:bg-btn duration-200' ><HiArrowSmallRight/></span>
-                        </div>
-                    </div>
-                    {/* Movie Card  */}
-                    <div className="flex gap-7 pb-24">
-                        <MovieCard movie='true'/>
-                        <MovieCard movie='true'/>
-                        <MovieCard movie='true'/>
-                        <MovieCard movie='true'/>
-                        <MovieCard movie='true'/>
                     </div>
                 </div>
+               
 
             </div>
         </section>

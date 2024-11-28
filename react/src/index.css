@@ -3,7 +3,7 @@
 @tailwind utilities;
 @layer utilities{
     .container-fluid{
-        @apply px-28
+        @apply px-4 md:px-6 xl:px-28
     }
     .active{
         max-height: 1000px;
@@ -499,4 +499,76 @@ video::-webkit-media-slider-container {
 .hover:hover{
     background: #e44717 !important;
     color: #ffffff;
+}
+
+.faq {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1.4s ease-in-out;
+    -webkit-transition: max-height 1.4s ease-in-out;
+    -moz-transition: max-height 1.4s ease-in-out;
+    -ms-transition: max-height 1.4s ease-in-out;
+    -o-transition: max-height 1.4s ease-in-out;
+}
+
+.faq.show {
+    max-height: 500px;  
+}
+
+.compare__table{
+   overflow: hidden;
+
+}
+.compare__table th{
+    background: #0f0f0f;
+    padding: 20px;
+    border: 1px solid #262626;
+}
+.compare__table tr, .compare__table td{
+    border: 1px solid #262626;
+    color: #999999;
+    font-weight: 500;
+    font-size: 18px;
+}
+.compare__table td{
+    padding: 20px;
+    text-align: left;
+}
+.table__body{
+    border: 1px solid #262626;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+}
+.compare__table th:nth-child(1){
+    width: 250px;
+}
+@media (min-width:300px) and (max-width:330px) {
+    .compare__table tr, .compare__table td{
+        font-size: 6px;
+        padding: 6px 2px;
+    }
+    .compare__table th:nth-child(1){
+        width: 100px;
+    }
+}
+@media (min-width:331px) and (max-width:575px) {
+    .compare__table tr, .compare__table td{
+        font-size: 8px;
+        padding: 8px;
+    }
+    .compare__table th:nth-child(1){
+        width: 100px;
+    }
+}
+@media (min-width:576px) and (max-width:767px) {
+    .compare__table tr, .compare__table td{
+        font-size: 8px;
+        padding: 14px;
+    }
+    .compare__table th:nth-child(1){
+        width: 100px;
+    }
 }
