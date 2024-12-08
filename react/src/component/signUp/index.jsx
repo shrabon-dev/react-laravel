@@ -12,7 +12,7 @@ export default function SignUpForm() {
 
     // Checking User Authorize or Not
    if(token){
-    return <Navigate to={'/dashboard'} />
+    return <Navigate to={'/panel'} />
    }
 
 

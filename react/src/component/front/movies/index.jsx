@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import MovieCard from '../movieCard'
 import { HiArrowSmallLeft } from "react-icons/hi2";
 import { HiArrowSmallRight } from "react-icons/hi2";
@@ -9,6 +9,7 @@ import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 
 import { Swiper, SwiperSlide,useSwiper  } from 'swiper/react';
 import Title from '../../title';
+import Api from '../../../api';
 
 export default function Movies() {
     const [releaseCurs, setReleaseCurs] = useState(null);
@@ -19,6 +20,18 @@ export default function Movies() {
     const [genresShowCurs, setGenresShowCurs] = useState(null);
     const [trendShowCurs, setTrendShowCurs] = useState(null);
     const [hviewsShowCurs, setHviewsShowCurs] = useState(null);
+    const [data, setData] = useState(null);
+
+    // http://localhost:8000/api/movies/show
+    useEffect(()=>{
+        Api.get('/movies/show')
+        .then((response)=>{
+            setData(response.data.value)
+        })
+    },[])
+
+    // console.log(data )
+
   return (
     <>
         <section>
@@ -59,27 +72,14 @@ export default function Movies() {
                             },
                         }}
                         >
-                        <SwiperSlide>
-                            <MovieCard/>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <MovieCard/>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <MovieCard/>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <MovieCard/>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <MovieCard/>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <MovieCard/>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <MovieCard/>
-                        </SwiperSlide>
+                        
+                        {data && data.map((item,index)=>
+                            <SwiperSlide>
+                               
+                                <MovieCard movie={true} value={item}/>
+                            </SwiperSlide>
+                        )}
+                
                         </Swiper> 
                         </div>
                     </div>

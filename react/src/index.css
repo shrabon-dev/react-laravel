@@ -55,7 +55,7 @@ Hex 3:  #EDF4F5
 
 Hex 4:  #FFFFFF
 
-Hex 5:  #F78F1E */
+Hex 5:  #E50000 */
 
 /* Main Content Style */
 
@@ -71,6 +71,8 @@ body{
     font-size: 18px;
     font-weight: 600;
     overflow-x: hidden;
+    box-sizing: border-box;
+
 }
 .container{
     max-width: 1500px;
@@ -88,12 +90,10 @@ a{
     justify-content: space-between;
 }
 .asideMenuBar{
-    width: 200px;
     height: 100vh;
-    background: #054950;
     overflow-y: auto;
     scroll-behavior: smooth;
-    padding-top: 63px;
+    padding-top: 20px;
     position: sticky;
     top: 0;
 }
@@ -114,7 +114,7 @@ a{
 }
 .asideMenuBar ul li a:hover{
     color: #ffffff;
-    background: #F78F1E;
+    background: #E50000;
 }
 /* Customize the scrollbar */
 ::-webkit-scrollbar {
@@ -126,11 +126,11 @@ background-color: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-background-color: #F78F1E;
+background-color: #E50000;
 border-radius: 6px;
 }
 ::-webkit-scrollbar-thumb:hover {
-background-color: #118e9c;
+background-color: #f1f1f1;
 }
 
 /* Customize the scrollbar */
@@ -143,11 +143,11 @@ background-color: #054950;
 }
 
 .asideMenuBar::-webkit-scrollbar-thumb {
-background-color: #F78F1E;
+background-color: #E50000;
 border-radius: 6px;
 }
 .asideMenuBar::-webkit-scrollbar-thumb:hover {
-background-color: #118e9c;
+background-color: #f1f1f1;
 }
 #content{
     width: 100%;
@@ -155,11 +155,9 @@ background-color: #118e9c;
 }
 
 .headerMenuBar{
-    background: #EDF4F5;
     padding: 20px;
     display: flex;
     justify-content: space-between;
-    box-shadow: 0 0 20px 0 #c3c3c4;
 }
 .headerMenuBar ul li a{
     font-size: 18px;
@@ -171,10 +169,10 @@ background-color: #118e9c;
     -moz-transition: .3s all ease-in-out;
     -ms-transition: .3s all ease-in-out;
     -o-transition: .3s all ease-in-out;
-    color: #054950;
+    color: #ffffff;
 }
 .headerMenuBar ul li a:hover{
-    color: #F78F1E;
+    color: #E50000;
 }
 .content_box{
     padding: 20px;
@@ -184,10 +182,10 @@ background-color: #118e9c;
     font-weight: 500;
     display: inline-block;
     font-family: 'Quicksand', sans-serif;
-    color: #054950;
+    color: #ffffff;
 }
 .alert{
-    color: #F78F1E;
+    color: #E50000;
 
 }
 .error{
@@ -262,7 +260,7 @@ background-color: #118e9c;
     }
     50% {
       transform: scale(1.5);
-      color: #118e9c;
+      color: #f1f1f1;
 
     }
     100% {
@@ -457,12 +455,10 @@ input:focus{
 /* Style the individual video controls */
 video::-webkit-media-controls-play-button,
 video::-webkit-media-controls-pause-button {
-      background-color: #e44717;
+      background-color: #E50000;
       border: none;
       border-radius: 8px;
-      color: #eeff00;
-      font-size: 14px;
-      margin: 10px 0px;
+      font-size: 10px;
       cursor: pointer;
       -webkit-border-radius: 8px;
       -moz-border-radius: 8px;
@@ -489,6 +485,30 @@ video::-webkit-media-slider-container {
     background-color: #ffffff; /* Light gray background for the slider track */
     border-radius: 2px; /* Make the slider track slightly rounded */
 }
+ 
+.play_truck_range {
+    height: 12px;
+    -webkit-appearance: none;
+    background: #ffffff86;
+    outline: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: none;
+    border: 1px solid #ffffff;
+    width: 100%;
+  }
+  .play_truck_range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #e70000;
+
+    cursor: pointer;
+    border: 2px solid #ffffff;
+    box-shadow: -1130px 0 0 1123px #e70000;
+  }
+  
 .hover{
     transition: .4s all ease-in-out;
     -webkit-transition: .4s all ease-in-out;
@@ -500,7 +520,10 @@ video::-webkit-media-slider-container {
     background: #e44717 !important;
     color: #ffffff;
 }
-
+.video_control{
+    position: absolute;
+    z-index: 99;
+}
 .faq {
     max-height: 0;
     overflow: hidden;
@@ -571,4 +594,24 @@ video::-webkit-media-slider-container {
     .compare__table th:nth-child(1){
         width: 100px;
     }
+}
+
+/* User table Start */
+
+.user_table{
+    border: 1px solid #141414;
+    /* background: #141414; */
+    box-shadow: 0 0 10px 0 #00000017;
+    border-radius: 0px;
+}
+.user_table thead{
+    background: #373737;
+}
+.user_table tbody{
+    background: #262626;
+}
+.user_table tr,.user_table th,.user_table td {
+    border-color: #141414;
+    padding: 10px;
+    color: #d3d3d3;
 }

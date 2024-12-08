@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../assets/light-logo.png'
+import logo from '../../assets/logo.png'
 import { IoSearchOutline } from "react-icons/io5";
 import { IoIosNotifications } from "react-icons/io";
 import { NavLink } from 'react-router-dom';
@@ -22,9 +22,11 @@ export default function Navbar() {
         <div className='flex justify-between items-center '>
             {/* Logo Start */}
             <div className="">
+            <NavLink to={'/'}>
                 <picture>
                     <img className='block w-40'  src={logo} alt="vplay logo" />
                 </picture>
+            </NavLink>
             </div>
             <ul className='flex lg:gap-10 bg-dark p-4 py-6 border-2 border-subDark rounded-lg'>
                 <li><NavLink to={'/'}  className='font-manrope font-light md:text-sm lg:text-lg p-2 lg:p-1 xl:p-4 py-[12px] hover:bg-subDark rounded-lg duration-300 ease-linear' href="#">Home</NavLink></li>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\VideoController;
+use App\Http\Controllers\Api\FrontEndController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,3 +31,4 @@ Route::middleware('auth:sanctum')->group(function(){
 
 Route::post('/auth/signup',[AuthController::class,'signup']);
 Route::post('/auth/login',[AuthController::class,'login']);
+Route::get('/movies/show', [FrontEndController::class,'Movies']);

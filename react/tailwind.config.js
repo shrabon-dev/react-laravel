@@ -17,6 +17,14 @@ export default {
             'body' : '#141414',
             'second' : '#999999',
             'btn' : '#E50000',
+            'button':{
+                'dark':'#0F0F0F',
+                'hover':'#262626',
+                'delete':'#E50000',
+                'view':'#054950',
+                'edit':'#513893',
+            }
+
         },
         fontFamily:{
             'interTight': ['Inter Tight', 'sans-serif'],

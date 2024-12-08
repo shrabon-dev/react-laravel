@@ -10,7 +10,7 @@ export default function LoginForm() {
 
     // Checking User Authorize or Not
    if(token){
-    return <Navigate to={'/dashboard'} />
+    return <Navigate to={'/panel'} />
    }
 
     let email = useRef(null);
@@ -32,7 +32,7 @@ export default function LoginForm() {
         .then(({data}) => {
             setToken(data.token)
             setUser(data.data)
-           return <Navigate to='/dashboard'/>
+           return <Navigate to='/panel'/>
         })
         .catch((error) => {
             setError(error.response.data.errors);

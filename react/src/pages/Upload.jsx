@@ -3,6 +3,7 @@ import Breadcrum from '../component/breadcrumb'
 import Api from '../api';
 import Resumable from 'resumablejs';
 import { useStateContext } from '../context/ContextProvider';
+import BreadCrumb from './backend/util/BreadCrumb';
 
 export default function Upload() {
     let [steps,setSteps] = useState({
@@ -106,8 +107,6 @@ export default function Upload() {
                 // console.log(file)
                 console.log(responese)
               })
-
-
             }
         },[steps.stepTwo])
 
@@ -393,7 +392,7 @@ export default function Upload() {
             </div>
         }
 
-      <Breadcrum/>
+        <BreadCrumb current="Video Upload"/>
         <form className='max-w-4xl p-10 border bg-main rounded-lg shadow-xl m-auto' encType="multipart/form-data">
             {/* Tracking Form Data Uploading Start */}
             <div className={`track relative after:absolute after:bg-white after:content-[''] after:w-full after:h-4 after:top-1/2 z-0 after:-translate-y-1/2 after:shadow-inner after:shadow-dark after:left-0 before:bg-main before:z-10 before:absolute before:content-[''] before:duration-700 before:ease-linear ${steps.stepFive ? `before:w-[100%]`:`${steps.stepFour ? `before:w-[75%]`:`${steps.stepThree ? `before:w-[50%]`:`${steps.stepTwo ? `before:w-[25%]`:`${steps.stepOne ? `25%`:'0%'}`}`}`}`} before:rounded-full before:h-2 before:top-[52%] before:-translate-y-1/2 before:left-0 mx-10  flex justify-between items-center`}>

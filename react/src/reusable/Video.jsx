@@ -1,7 +1,7 @@
 import React from 'react'
 import psOne from '../assets/poster/im1.png'
 import psTwo from '../assets/poster/im2.jpg'
-import logo from '../assets/light-logo.png'
+import logo from '../assets/logo.png'
 
 export default function Video() {
   return (

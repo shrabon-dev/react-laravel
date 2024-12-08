@@ -78,7 +78,7 @@ const router = createBrowserRouter([
                 element:<Signup/>,
             },
             {
-                path:'/play',
+                path:'/play/:id',
                 element:<PlayVideo/>,
             },
             {

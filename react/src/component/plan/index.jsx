@@ -29,8 +29,8 @@ export default function Plan() {
                          <p className='font-manrope font-normal text-lg text-second pt-4 pb-12'>Enjoy an extensive library of movies and shows, featuring a range of content, including recently released titles.</p>
                          <h2 className='font-manrope font-medium text-5xl text-white'>$9.99 <span className='font-manrope font-medium text-2xl text-second'>/Month</span></h2>
                          <div className="btn pt-12 md:flex justify-center">
-                          <a className='border-border border text-white font-manrope mb-2 sm:mb-0 text-xs xl:text-xl   py-3 px-3 2xl:px-6 inline-block ml-3 bg-dark rounded-md' href="#">Start Free Trial</a>
-                          <a className='border-border border text-white font-manrope text-xs xl:text-xl  py-3 px-3 2xl:px-6 inline-block ml-3 bg-btn rounded-md' href="#">Choose Plan</a>
+                          <a className='border-border border text-white font-manrope mb-2 sm:mb-0 text-xs xl:text-sm xl:py-2 py-3 px-3 2xl:px-6 inline-block 2xl:text-xl ml-3 bg-dark rounded-md' href="#">Start Free Trial</a>
+                          <a className='border-border border text-white font-manrope text-xs xl:text-sm py-3 px-3 xl:py-2 2xl:px-6 inline-block ml-3 bg-btn 2xl:text-xl rounded-md' href="#">Choose Plan</a>
                          </div>
                       </div>
                 </div>
@@ -40,8 +40,8 @@ export default function Plan() {
                          <p className='font-manrope font-normal text-lg text-second pt-4 pb-12'>Enjoy an extensive library of movies and shows, featuring a range of content, including recently released titles.</p>
                          <h2 className='font-manrope font-medium text-5xl text-white'>$12.99 <span className='font-manrope font-medium text-2xl text-second'>/Month</span></h2>
                          <div className="btn pt-12 md:flex justify-center">
-                          <a className='border-border border text-white font-manrope mb-2 sm:mb-0 text-xs xl:text-xl py-3 px-3 2xl:px-6 inline-block ml-3 bg-dark rounded-md' href="#">Start Free Trial</a>
-                          <a className='border-border border text-white font-manrope text-xs xl:text-xl py-3 px-3 2xl:px-6  inline-block ml-3 bg-btn rounded-md' href="#">Choose Plan</a>
+                          <a className='border-border border text-white font-manrope mb-2 sm:mb-0 xl:text-sm   py-3 px-3 xl:py-2 2xl:px-6 2xl:text-xl inline-block ml-3 bg-dark rounded-md' href="#">Start Free Trial</a>
+                          <a className='border-border border text-white font-manrope text-xs xl:text-sm py-3 px-3 2xl:px-6 xl:py-2 inline-block 2xl:text-xl ml-3 bg-btn rounded-md' href="#">Choose Plan</a>
                          </div>
                       </div>
                 </div>
@@ -51,8 +51,8 @@ export default function Plan() {
                          <p className='font-manrope font-normal text-lg text-second pt-4 pb-12'>Enjoy an extensive library of movies and shows, featuring a range of content, including recently released titles.</p>
                          <h2 className='font-manrope font-medium text-5xl text-white'>$14.99 <span className='font-manrope font-medium text-2xl text-second'>/Month</span></h2>
                          <div className="btn pt-12 md:flex justify-center">
-                          <a className='border-border border text-white font-manrope mb-2 sm:mb-0 text-xs xl:text-xl py-3 px-3 2xl:px-6 inline-block ml-3 bg-dark rounded-md' href="#">Start Free Trial</a>
-                          <a className='border-border border text-white font-manrope text-xs xl:text-xl py-3 px-3 2xl:px-6 inline-block ml-3 bg-btn rounded-md' href="#">Choose Plan</a>
+                          <a className='border-border border text-white font-manrope mb-2 sm:mb-0 text-base xl:text-sm py-3 px-3 xl:py-2 2xl:px-6 2xl:text-xl inline-block ml-3 bg-dark rounded-md' href="#">Start Free Trial</a>
+                          <a className='border-border border text-white font-manrope text-xs xl:text-sm py-3 px-3 2xl:px-6 xl:py-2 inline-block 2xl:text-xl ml-3 bg-btn rounded-md' href="#">Choose Plan</a>
                          </div>
                       </div>
                 </div>

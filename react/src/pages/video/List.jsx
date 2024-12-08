@@ -46,17 +46,17 @@ export default function List() {
                 {data && data.map(item => (
                     item.id && <React.Fragment  key={item.id}>
                     <tr className="border-b dark:border-neutral-500">
-                    <td className="whitespace-nowrap px-6 py-4 font-medium">{item.id}</td>
-                    <td className="whitespace-nowrap px-6 py-4 font-manrope font-bold">{item.movie_name}</td>
-                    <td className="whitespace-nowrap px-6 py-4 font-manrope font-bold text-center"> <picture><img className='w-20 h-20 block m-auto' src={`http://localhost:8000/storage/uploads/thumbnail/${item.thumbnail}`} alt="" /></picture></td>
-                    <td className="whitespace-nowrap px-6 py-4 font-manrope font-bold">{item.rating}</td>
-                    <td className="whitespace-nowrap px-6 py-4 font-manrope font-bold">{item.status}</td>
-                    <td className="whitespace-nowrap px-6 py-4 font-manrope font-bold">{item.premium ? 'Yes, Premium':"It's free"}</td>
-                    <td className="whitespace-nowrap px-6 py-4 font-manrope font-bold">{item.views > 0 ? item.views : 0}</td>
-                    <td className="whitespace-nowrap px-6 py-4 font-manrope font-bold">{item.likes > 0 ? item.likes:0}</td>
-                    <td className="whitespace-nowrap px-6 py-4 font-manrope font-bold">{item.unlikes > 0 ? item.unlikes:0}</td>
-                    <td className="whitespace-nowrap px-6 py-4 font-manrope font-bold">{item.created_at}</td>
-                    <td className="whitespace-nowrap px-6 py-4 font-manrope font-bold">
+                    <td className="whitespace-nowrap px-6 text-second py-4 font-medium">{item.id}</td>
+                    <td className="whitespace-nowrap px-6 text-second py-4 font-manrope font-bold">{item.movie_name}</td>
+                    <td className="whitespace-nowrap px-6 text-second py-4 font-manrope font-bold text-center"> <picture><img className='w-20 h-20 block m-auto' src={`http://localhost:8000/storage/uploads/thumbnail/${item.thumbnail}`} alt="" /></picture></td>
+                    <td className="whitespace-nowrap px-6 text-second py-4 font-manrope font-bold">{item.rating}</td>
+                    <td className="whitespace-nowrap px-6 text-second py-4 font-manrope font-bold">{item.status}</td>
+                    <td className="whitespace-nowrap px-6 text-second py-4 font-manrope font-bold">{item.premium ? 'Yes, Premium':"It's free"}</td>
+                    <td className="whitespace-nowrap px-6 text-second py-4 font-manrope font-bold">{item.views > 0 ? item.views : 0}</td>
+                    <td className="whitespace-nowrap px-6 text-second py-4 font-manrope font-bold">{item.likes > 0 ? item.likes:0}</td>
+                    <td className="whitespace-nowrap px-6 text-second py-4 font-manrope font-bold">{item.unlikes > 0 ? item.unlikes:0}</td>
+                    <td className="whitespace-nowrap px-6 text-second py-4 font-manrope font-bold">{item.created_at}</td>
+                    <td className="whitespace-nowrap px-6 text-second py-4 font-manrope font-bold">
                             <span className='font-manrope font-normal text-sm p-2 rounded-lg bg-blue-600 mr-1'><Link onClick={()=>setModalShow(item.id)} >View</Link></span>
                             <span className='font-manrope font-normal text-sm p-2 rounded-lg bg-green-600 mr-1'><Link to={`/panel/video/update/${item.id}`}>Edit</Link></span>
                             <span className='font-manrope font-normal text-sm p-2 rounded-lg bg-red-600'><Link onClick={()=>handleDelete(item.id)}>Delete</Link></span>

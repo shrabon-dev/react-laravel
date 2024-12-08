@@ -30,14 +30,14 @@ export default function Faqs() {
                     <div className="border rounded-xl border-border bg-subDark p-5 flex gap-5">
                         <div className="list">
                             <a
-                                className="border-border border text-white font-manrope text-sm lg:text-2xl py-3 w-6 md:w-10 md:h-10 lg:w-14 h-6 lg:h-14 inline-flex justify-center items-center bg-dark rounded-md"
+                                className="border-border border text-white font-manrope text-sm lg:text-xl py-3 w-6 md:w-10 md:h-10 lg:w-14 h-6 lg:h-14 inline-flex justify-center items-center bg-dark rounded-md"
                                 href="#"
                             >
                                 {1 + index}
                             </a>
                         </div>
                         <div className="faq-info">
-                            <h3 className="font-manrope font-bold text-xl md:text-base lg:text-2xl text-white">{item.q}</h3>
+                            <h3 className="font-manrope font-bold text-xl md:text-base lg:text-xl text-white">{item.q}</h3>
                             <p
                                 className={`faq ${
                                     index === faq ? 'show' : ''

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Api from '../api'
 import { useStateContext } from '../context/ContextProvider'
+import BreadCrumb from './backend/util/BreadCrumb';
 
 export default function Users() {
     let {loading,setLoading,setNotify} = useStateContext();
@@ -51,12 +52,13 @@ export default function Users() {
 
   return (
     <>
+        <BreadCrumb current="User List"/>
         <div className="d_flex justify_space_between align_item_center">
-            <p className='p'>All Users</p>
-            <p className='p btn btn_primary'><Link to={'/user/new-user'}>Add New User</Link></p>
+            <p className='text-sm text-second font-manrope font-normal'>All Users</p>
+            <p className='font-manrope text-second bg-button-edit/70 hover:bg-button-hover hover:shadow-sm ease-linear duration-300  text-base inline-block px-4 py-2 rounded-full '><Link to={'/user/new-user'}>Add New User</Link></p>
         </div>
         <div className="m_t_30">
-            <table cellPadding='0' cellSpacing='0'  >
+            <table cellPadding='0' cellSpacing='0' className='user_table' >
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -75,16 +77,16 @@ export default function Users() {
                         <td>{item.email}</td>
                         <td>{entryDate(item.created_at)}</td>
                         <td>
-                            <span className='p btn_primary'><Link to={`/user/${item.id}/edit`}>Edit</Link></span>
-                            <span className='p '><Link className='btn_danger px_1 py_1' onClick={()=>handleDelete(item.id)}>Delete</Link></span>
+                            <span className='font-manrope text-second bg-button-edit text-sm inline-block px-2 py-1 rounded-full '><Link to={`/user/${item.id}/edit`}>Edit</Link></span>
+                            <span className='font-manrope text-second bg-btn text-sm inline-block px-2 py-1 rounded-full ml-1'><Link className='' onClick={()=>handleDelete(item.id)}>Delete</Link></span>
                         </td>
                     </tr>
                     )}
                 </tbody>
             </table>
             <div className='m_t_30'>
-                <span className='p btn_primary'><Link onClick={handlePrevPage}>Prev</Link></span>
-                <span className='p '><Link className='btn_danger px_1 py_1' onClick={handleNextPage}>Next</Link></span>
+                <span className='font-manrope text-second bg-button-dark hover:bg-button-hover hover:shadow-sm duration-300 text-lg inline-block px-4 py-2 rounded-full '><Link onClick={handlePrevPage}>Prev</Link></span>
+                <span className='font-manrope text-second bg-button-dark hover:bg-button-hover hover:shadow-sm duration-300  text-lg ml-2 inline-block px-4 py-2 rounded-full '><Link onClick={handleNextPage}>Next</Link></span>
             </div>
         </div>
     </>

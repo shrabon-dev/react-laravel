@@ -1,7 +1,10 @@
 import axios from "axios"
 
+export const BASE = 'http://localhost:8000/';
+export const BASE_URL = 'http://localhost:8000/api/';
+
 const Api = axios.create({
-    baseURL: 'http://localhost:8000/api/',
+    baseURL: BASE_URL,
 });
 
 // Add a request interceptor
