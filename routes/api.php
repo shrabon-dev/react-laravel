@@ -26,6 +26,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::post('/auth/logout',[AuthController::class,'logout']);
     Route::apiResource('/auth/users', UserController::class);
     Route::apiResource('/video', VideoController::class);
+    Route::post('/video/upload', [VideoController::class, 'video_upload']);
 
 });
 

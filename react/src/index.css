@@ -256,7 +256,7 @@ background-color: #f1f1f1;
 @keyframes scaleText {
     0% {
       transform: scale(1);
-      color: #03dd44;
+      color: #dd0303;
     }
     50% {
       transform: scale(1.5);
@@ -595,6 +595,7 @@ video::-webkit-media-slider-container {
         width: 100px;
     }
 }
+
 
 /* User table Start */
 

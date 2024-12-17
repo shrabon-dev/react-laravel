@@ -73,13 +73,13 @@ export default function Upload() {
     useEffect(()=>{
             if(steps.stepTwo){
             const resumable = new Resumable({
-                target: 'http://localhost:8000/api/upload', // Adjust your Laravel API endpoint
+                target: 'http://localhost:8000/api/video/upload',
                 chunkSize: 1 * 1024 * 1024,
                 method: 'POST',
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
-                testChunks:false,
+                testChunks: true,
                 throttleProgressCallbacks:1,
               });
 
@@ -100,7 +100,7 @@ export default function Upload() {
                 }
               })
               resumable.on('fileSuccess', (file, response) => {
-
+                console.log('Success Fully Video Uploaded' + response)
               });
 
               resumable.on('fileError',(file,responese)=>{

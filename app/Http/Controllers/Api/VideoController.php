@@ -13,6 +13,7 @@ use Pion\Laravel\ChunkUpload\Exceptions\UploadMissingFileException;
 use Pion\Laravel\ChunkUpload\Handler\AbstractHandler;
 use Pion\Laravel\ChunkUpload\Handler\HandlerFactory;
 use Pion\Laravel\ChunkUpload\Receiver\FileReceiver;
+use Illuminate\Support\Facades\Storage;
 
 class VideoController extends Controller
 {
@@ -36,6 +37,7 @@ class VideoController extends Controller
     public function store(HttpRequest $request)
     {
 
+    
         if($request->title){
                     $castPhotos = [];
                 if ($request->hasFile('cast')) {
@@ -76,74 +78,112 @@ class VideoController extends Controller
         }
         // $data = $request->validated();
 
+        // create the file receiver
+        $receiver = new FileReceiver("file", $request, HandlerFactory::classFromRequest($request));
 
+        // check if the upload is success, throw exception or return response you need
+        if ($receiver->isUploaded() === false) {
+        throw new UploadMissingFileException();
+        }
 
+        // receive the file
+        $save = $receiver->receive();
 
-         // create the file receiver
-         $receiver = new FileReceiver("file", $request, HandlerFactory::classFromRequest($request));
+        // check if the upload has finished (in chunk mode it will send smaller files)
+        if ($save->isFinished()) {
+        // save the file and return any response you need, current example uses `move` function. If you are
+        // not using move, you need to manually delete the file by unlink($save->getFile()->getPathname())
+        return $this->saveFile($save->getFile(), $request);
+        }
 
-         // check if the upload is success, throw exception or return response you need
-         if ($receiver->isUploaded() === false) {
-             throw new UploadMissingFileException();
-         }
-
-         // receive the file
-         $save = $receiver->receive();
-
-         // check if the upload has finished (in chunk mode it will send smaller files)
-         if ($save->isFinished()) {
-             return $this->saveFile($save->getFile());
-         }
-
-         // we are in chunk mode, lets send the current progress
-         /** @var AbstractHandler $handler */
-         $handler = $save->handler();
-
-         return response()->json([
-             "done" => $handler->getPercentageDone(),
-             'status' => true
-         ]);
-
-    }
-    protected function saveFile(UploadedFile $file)
-    {
-        $fileName = $this->createFilename($file);
-        // Group files by mime type
-        $mime = str_replace('/', '-', $file->getMimeType());
-        // Group files by the date (week
-        $dateFolder = date("Y-m-W");
-
-        // Build the file path
-        $filePath = "public/uploads/video";
-        $finalPath = storage_path("app/".$filePath);
-
-        // $customeName =  time().'_'.$file->getClientOriginalName();
-        // move the file name
-        $file->move($finalPath, $file->getClientOriginalName());
+        // we are in chunk mode, lets send the current progress
+        /** @var AbstractHandler $handler */
+        $handler = $save->handler();
 
         return response()->json([
-            'path' => $filePath,
-            'name' => $file->getClientOriginalName(),
-            'mime_type' => $mime
+        "data" => $request,
+        "done" => $handler->getPercentageDone(),
+        "status" => true,
         ]);
     }
+    public function video_upload(Request $request) {  
+        try{
+            // create the file receiver
+            $receiver = new FileReceiver("file", $request, HandlerFactory::classFromRequest($request));
+                
+            // check if the upload is success, throw exception or return response you need
+            if ($receiver->isUploaded() === false) {
+                throw new UploadMissingFileException();
+            }
 
-    /**
-     * Create unique filename for uploaded file
-     * @param UploadedFile $file
-     * @return string
-     */
-    protected function createFilename(UploadedFile $file)
-    {
+            // receive the file
+            $save = $receiver->receive();
+
+            // check if the upload has finished (in chunk mode it will send smaller files)
+            if ($save->isFinished()) {
+                // save the file and return any response you need, current example uses `move` function. If you are
+                // not using move, you need to manually delete the file by unlink($save->getFile()->getPathname())
+                return $this->saveFile($save->getFile(), $request);
+            }
+
+            // we are in chunk mode, lets send the current progress
+            /** @var AbstractHandler $handler */
+            $handler = $save->handler();
+
+            return response()->json([
+                "done" => $handler->getPercentageDone(),
+                'status' => true
+            ]);
+        }catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+     
+      }
+    protected function saveFile(UploadedFile $file, Request $request) {
+        $user_obj = auth()->user();
+        $fileName = $this->createFilename($file);
+   
+        // Get file mime type
+        $mime_original = $file->getMimeType();
+        $mime = str_replace('/', '-', $mime_original);
+   
+        $folderDATE = $request->dataDATE;
+   
+        $folder  = $folderDATE;
+        $filePath = "public/uploads/medialibrary/{$user_obj->id}/{$folder}/";
+        $finalPath = storage_path("app/".$filePath);
+   
+        $fileSize = $file->getSize();
+        // move the file name
+        $file->move($finalPath, $fileName);
+   
+        $url_base = 'storage/upload/medialibrary/'.$user_obj->id."/{$folderDATE}/".$fileName;
+   
+        return response()->json([
+         'path' => $filePath,
+         'name' => $fileName,
+         'mime_type' => $mime
+        ]);
+     }
+   
+     /**
+      * Create unique filename for uploaded file
+      * @param UploadedFile $file
+      * @return string
+      */
+      protected function createFilename(UploadedFile $file) {
         $extension = $file->getClientOriginalExtension();
-        $filename = $file->getClientOriginalName(); // Filename without extension
-        // $filename = str_replace(".".$extension, "", $file->getClientOriginalName()); // Filename without extension
-
-        // Add timestamp hash to name of the file
-        $filename .= "_" . md5(time()) . "." . $extension;
-
-        return $filename;
-    }
+        $filename = str_replace(".".$extension, "", $file->getClientOriginalName()); // Filename without extension
+   
+        //delete timestamp from file name
+        $temp_arr = explode('_', $filename);
+        if ( isset($temp_arr[0]) ) unset($temp_arr[0]);
+        $filename = implode('_', $temp_arr);
+   
+        //here you can manipulate with file name e.g. HASHED
+        return $filename.".".$extension;
+      }
+   
 
 
     public function show($id)
